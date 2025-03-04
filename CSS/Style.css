@@ -6,50 +6,79 @@
 }
 
 body {
-    
-    /*background-image: url("https://www.numier.com/carta/imagenfondos/5374/ImagenPrecarta_sinlogo.jpg");*/
-    
-    background-size: cover;       
-    background-position: center;  
-    background-repeat: no-repeat; 
-    height: 100vh;                
-    overflow: hidden;             
-    z-index: -1;
+    position: relative; /* Para que el pseudo-elemento se ubique correctamente */
+    background-image: url("https://www.numier.com/carta/imagenfondos/5374/ImagenPrecarta_sinlogo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0; /* Asegura que el pseudo-elemento esté encima de cualquier fondo */
 }
-header{
+
+body::before {
+    content: ""; /* Crea el pseudo-elemento */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.4); /* Filtro blanco con opacidad */
+    z-index: -1; /* Coloca el filtro detrás del contenido */
+}
+
+header {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-bottom: 200px;
-    
 }
-header img{
+
+header img {
     max-width: 300px;
 }
-#businessName{
-    
-    font-size: 50px;
 
+#businessName {
+    font-size: 50px;
 }
-main{
+
+main {
     text-align: center;
-    
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
-main .boton button{
+main .boton button {
     background-color: red;
-    
-    min-height: 60px;
-    font-size: 35px;
+    font-size: 40px;
     border-radius: 10px;
     color: #fff;
     border: none;
+    padding: 10px 20px;
 }
-main .iconos img{
-    max-width: 60px;
+
+main .iconos img {
+    margin-top: 20px;
+    max-width: 70px;
+}
+
+main .iconos {
+    display: flex;
+    justify-content: space-around;
+}
+
+footer{
+    background-color: #333;
+    color: #fff;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+}
+footer p p.punto{
+    color: blue;
 }
