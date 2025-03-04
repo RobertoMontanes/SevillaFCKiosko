@@ -20,8 +20,8 @@ axios.get(url)
 
         
         document.getElementById('businessName').textContent = nameShow; 
-        document.getElementById('businessDescription').textContent = description; 
         document.getElementById('businessLogo').src = logo; 
+        document.getElementById('businessDescription').textContent = description; 
         document.getElementById('businessAddress').textContent = address;
         document.getElementById('businessEmail').textContent = email; 
         document.getElementById('businessPhone').textContent = phone; 

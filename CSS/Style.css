@@ -1,0 +1,16 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/*
+body {
+    background-image: url("https://www.numier.com/carta/imagenfondos/5374/ImagenPrecarta_sinlogo.jpg");
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat; 
+    height: 100vh;                
+    overflow: hidden;             
+    z-index: -1;
+}
+*/
