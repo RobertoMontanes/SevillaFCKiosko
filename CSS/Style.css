@@ -2,10 +2,13 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
-/*
+
 body {
-    background-image: url("https://www.numier.com/carta/imagenfondos/5374/ImagenPrecarta_sinlogo.jpg");
+    
+    /*background-image: url("https://www.numier.com/carta/imagenfondos/5374/ImagenPrecarta_sinlogo.jpg");*/
+    
     background-size: cover;       
     background-position: center;  
     background-repeat: no-repeat; 
@@ -13,4 +16,40 @@ body {
     overflow: hidden;             
     z-index: -1;
 }
-*/
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 200px;
+    
+}
+header img{
+    max-width: 300px;
+}
+#businessName{
+    
+    font-size: 50px;
+
+}
+main{
+    text-align: center;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+main .boton button{
+    background-color: red;
+    
+    min-height: 60px;
+    font-size: 35px;
+    border-radius: 10px;
+    color: #fff;
+    border: none;
+}
+main .iconos img{
+    max-width: 60px;
+}
