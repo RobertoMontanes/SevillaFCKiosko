@@ -32,7 +32,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
 }
 
 header img {
@@ -41,6 +41,7 @@ header img {
 
 #businessName {
     font-size: 50px;
+    margin-top: 100px;
 }
 
 main {
@@ -50,13 +51,15 @@ main {
     align-items: center;
 }
 
-main .boton button {
+main .boton a {
+    text-decoration: none;
     background-color: red;
     font-size: 40px;
     border-radius: 10px;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 20px 20px;
+    cursor: pointer;
 }
 
 main .iconos img {
@@ -66,7 +69,8 @@ main .iconos img {
 
 main .iconos {
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: space-between;
 }
 
 footer{
@@ -80,6 +84,7 @@ footer{
     font-size: 40px;
     
 }
+
 footer p #punto{
     color:aqua;
 }
