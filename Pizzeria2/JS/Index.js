@@ -210,3 +210,8 @@ function actualizarIconoCarrito() {
 document.addEventListener('DOMContentLoaded', function() {
   actualizarIconoCarrito();
 });
+
+function agregarAlCarrito(nombre, precio, imagen) {
+  alert(`Añadido al carrito: ${nombre} - €${precio}`);
+  // Aquí puedes manejar la lógica para agregar al carrito en localStorage o actualizar una lista en pantalla.
+}
