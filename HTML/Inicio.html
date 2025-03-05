@@ -26,11 +26,13 @@
         color: white;
         padding: 10px 0;
         width: 100%;
-        position: sticky;
+        position: block;
         top: 0;
         z-index: 1000;
       }
-
+      ::-webkit-scrollbar{
+        width: 0;
+      }
       .header-container {
         display: flex;
         justify-content: space-between;
@@ -60,6 +62,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        
       }
 
       .sidebar nav ul {
@@ -72,9 +75,11 @@
 
       .sidebar nav ul li {
         margin: 20px 0;
+        
       }
-
+      
       .sidebar nav ul li a {
+        
         color: white;
         text-decoration: none;
         font-size: 30px; /* Aumentar tamaño de letra para mayor visibilidad */
@@ -195,8 +200,10 @@
         "https://www.numier.com/kiosco/api/business?name=sevillafcespt00101";
 
       axios.get(url).then((response) => {
-        const { logo } = response.data.data;
+        const { nameShow, logo } = response.data.data;
         document.getElementById("businessLogo").src = logo;
+        document.getElementById('businessName').textContent = nameShow; 
+
       });
 
       // Función para cargar los productos desde la API
@@ -207,7 +214,7 @@
         .then((data) => {
           const categorias = data.data.content;
           const productList = document.getElementById("productList");
-
+          
           categorias.forEach((categoria) => {
             categoria.products.forEach((producto) => {
               // Crear la tarjeta del producto
