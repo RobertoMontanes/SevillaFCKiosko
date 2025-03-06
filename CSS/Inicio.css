@@ -19,12 +19,12 @@
     width: 100%;
     top: 0;
     z-index: 1000;
+    position: fixed;
   }
   ::-webkit-scrollbar{
     width: 0;
   }
   .header-container {
-    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
