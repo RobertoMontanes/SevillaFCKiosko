@@ -60,7 +60,9 @@ fetch(
       });
     });
 
+
     // Inicializar carrito
+// Inicializar carrito
 const cart = [];
 
 // Elementos del DOM
@@ -146,8 +148,8 @@ document.addEventListener("click", function (e) {
     // Actualizar carrito visualmente
     renderCart();
   }
-  
-  // Aumentar cantidad 
+
+  // Aumentar cantidad
   if (e.target && e.target.classList.contains("increaseQuantity")) {
     const index = e.target.getAttribute("data-index");
     cart[index].quantity += 1;
@@ -170,6 +172,7 @@ document.addEventListener("click", function (e) {
     renderCart();
   }
 });
+
 
   })
   .catch((error) => console.log("Error:", error));
