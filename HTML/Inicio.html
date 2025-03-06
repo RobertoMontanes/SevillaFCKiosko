@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menú de Productos</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="../CSS/Inicio.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú de Productos</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="../CSS/Inicio.css">
+</head>
+<body>
 
-  <body>
-    
-    <header>
-      <div class="header-container">
-        <div id="businessName" class="business-name">Nombre de la tienda</div>
+  <header>
+    <div class="header-container">
+      <div id="businessName" class="business-name">Nombre de la tienda</div>
+    </div>
+  </header>
+
+  <aside class="sidebar">
+    <nav>
+      <ul>
         <img id="businessLogo" alt="Logo del Sevilla" class="business-logo" />
-      </div>
-    </header>
+        <li><a href="#bebidas">Bebidas</a></li>
+        <li><a href="#snacks">Snacks</a></li>
+        <li><a href="#comida-rapida">Comida rápida</a></li>
+        <li><a href="#aperitivos">Aperitivos</a></li>
+      </ul>
+    </nav>
+  </aside>
+  
 
-    <aside class="sidebar">
-      <nav>
-        <ul>
-          <li><a href="#bebidas">Bebidas</a></li>
-          <li><a href="#snacks">Snacks</a></li>
-          <li><a href="#comida-rapida">Comida rápida</a></li>
-          <li><a href="#aperitivos">Aperitvos</a></li>
-        </ul>
-      </nav>
-    </aside>
+  <main class="content">
+    <section id="bebidas">
+      <div class="product-container" id="bebidasList"></div>
+    </section>
 
-    <main class="content">
-      <h1>Productos</h1>
-      <div class="product-container" id="productList">
-      </div>
-    </main>
-    <script src="../JS/Inicio.js"></script>
-  </body>
+    <section id="snacks">
+      <div class="product-container" id="snacksList"></div>
+    </section>
+
+    <section id="comida-rapida">
+      <div class="product-container" id="comidaRapidaList"></div>
+    </section>
+
+    <section id="aperitivos">
+      <div class="product-container" id="aperitivosList"></div>
+    </section>
+  </main>
+
+  <script src="../JS/Inicio.js"></script>
+
+
+</body>
 </html>

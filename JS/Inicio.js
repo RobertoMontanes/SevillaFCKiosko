@@ -1,70 +1,63 @@
-const url =
-"https://www.numier.com/kiosco/api/business?name=sevillafcespt00101";
+const url = "https://www.numier.com/kiosco/api/business?name=sevillafcespt00101";
 
 axios.get(url).then((response) => {
-const { nameShow, logo } = response.data.data;
-document.getElementById("businessLogo").src = logo;
-document.getElementById('businessName').textContent = nameShow; 
-
+  const { nameShow, logo } = response.data.data;
+  document.getElementById("businessLogo").src = logo;
+  document.getElementById("businessName").textContent = nameShow;
 });
 
-// Función para cargar los productos desde la API
 fetch(
-"https://www.numier.com/kiosco/api/product?idBusinessInfo=262&lang=es&idParentCategory=0&catalog=R&typeProject=PEDIDOS"
+  "https://www.numier.com/kiosco/api/product?idBusinessInfo=262&lang=es&idParentCategory=0&catalog=R&typeProject=PEDIDOS"
 )
-.then((response) => response.json()) // Convertir la respuesta en JSON
-.then((data) => {
-  const categorias = data.data.content;
-  const productList = document.getElementById("productList");
-  
-  categorias.forEach((categoria) => {
-    categoria.products.forEach((producto) => {
-      // Crear la tarjeta del producto
-      const productCard = document.createElement("div");
-      productCard.classList.add("product-card");
+  .then((response) => response.json())
+  .then((data) => {
+    const categorias = data.data.content;
+    const productList = document.querySelector(".content"); // Contenedor principal
 
-      // Datos del producto
-      const productName = producto.name || "Producto sin nombre";
-      const productDescription =
-        producto.description || "Sin descripción";
-      const productPrice = producto.rates[0]?.price
-        ? `$${producto.rates[0].price}`
-        : "Precio no disponible";
-      const productImage =
-        producto.image || "https://via.placeholder.com/150";
+    categorias.forEach((categoria) => {
+      // Normalizar nombre de categoría para IDs
+      const categoriaId = categoria.name
+        .normalize("NFD") // Descompone tildes
+        .replace(/[\u0300-\u036f]/g, "") // Elimina tildes
+        .toLowerCase()
+        .replace(/\s+/g, "-"); // Reemplaza espacios con guiones
 
-      // Llenar la tarjeta del producto con los datos
-      productCard.innerHTML = `
-        <img src="${productImage}" alt="${productName}">
-        <h3>${productName}</h3>
-        <p>${productDescription}</p>
-        <div class="price"><span>${productPrice}</span></div>
+      // Crear título de categoría y contenedor
+      const categoriaSection = document.createElement("section");
+      categoriaSection.id = categoriaId;
+      categoriaSection.innerHTML = `
+        <h1>${categoria.name}</h1>
+        <hr>
+        <div class="product-container"></div>
       `;
 
-      // Añadir la tarjeta al contenedor de productos
-      productList.appendChild(productCard);
-    });
-  });
-})
-.catch((error) => console.log("Error:", error));
+      productList.appendChild(categoriaSection);
 
-// Código para realizar el desplazamiento
-const links = document.querySelectorAll('.sidebar a');
-links.forEach(link => {
-link.addEventListener('click', function(e) {
-  e.preventDefault(); // Evita el comportamiento por defecto del enlace
-  
-  // Obtener el destino al que apunta el enlace
-  const targetId = this.getAttribute('href').substring(1); // Obtener el ID sin el #
-  const targetElement = document.getElementById(targetId);
+      const categoryContainer = categoriaSection.querySelector(".product-container");
 
-  if (targetElement) {
-    // Desplazar 120px hacia abajo del elemento
-    window.scrollTo({
-      top: targetElement.offsetTop - 120, // Ajusta el desplazamiento según lo que necesites
-      behavior: 'smooth' // Hacer el desplazamiento suave
+      // Agregar productos a la categoría
+      categoria.products.forEach((producto) => {
+        const productCard = document.createElement("div");
+        productCard.classList.add("product-card");
+
+        const productName = producto.name || "Producto sin nombre";
+        const productDescription = producto.description || "Sin descripción";
+        const productPrice = producto.rates[0]?.price
+          ? `$${producto.rates[0].price}`
+          : "Precio no disponible";
+        const productImage =
+          producto.image || "https://via.placeholder.com/150";
+
+        productCard.innerHTML = `
+          <img src="${productImage}" alt="${productName}">
+          <h3>${productName}</h3>
+          <p>${productDescription}</p>
+          <div class="price"><span>${productPrice}</span></div>
+        `;
+
+        categoryContainer.appendChild(productCard);
+      });
     });
-  }
-});
-});
+  })
+  .catch((error) => console.log("Error:", error));
 
